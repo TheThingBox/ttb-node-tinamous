@@ -1,0 +1,89 @@
+<script type="text/x-red" data-template-name="tinamous">
+  <div class="form-row">
+    <label for="node-input-account"><i class="icon-user"></i> <span data-i18n="tinamous.account"></span></label>
+    <input type="text" id="node-input-account" data-i18n="[placeholder]tinamous.account">
+  </div>
+  <br />
+  <div class="form-row">
+    <label for="node-input-basic_key"><i class="icon-lock"></i> <span data-i18n="tinamous.basickey.label"></span></label>
+    <input type="text" id="node-input-basic_key" data-i18n="[placeholder]tinamous.basickey.placeholder">
+  </div>
+  <br />
+  <div class="form-row">
+    <label for="node-input-field"><i class="icon-tasks"></i> <span data-i18n="tinamous.field.label"></span></label>
+      <select id="node-input-field" style="width:250px !important">
+        <option value="" data-i18n="[html]tinamous.field.select"></option>
+        <option value="Field1" data-i18n="[html]tinamous.field.field1"></option>
+        <option value="Field2" data-i18n="[html]tinamous.field.field2"></option>
+        <option value="Field3" data-i18n="[html]tinamous.field.field3"></option>
+        <option value="Field4" data-i18n="[html]tinamous.field.field4"></option>
+        <option value="Field5" data-i18n="[html]tinamous.field.field5"></option>
+        <option value="Field6" data-i18n="[html]tinamous.field.field6"></option>
+        <option value="Field7" data-i18n="[html]tinamous.field.field7"></option>
+        <option value="Field8" data-i18n="[html]tinamous.field.field8"></option>
+        <option value="Field9" data-i18n="[html]tinamous.field.field9"></option>
+        <option value="Field10" data-i18n="[html]tinamous.field.field10"></option>
+        <option value="Field11" data-i18n="[html]tinamous.field.field11"></option>
+        <option value="Field12" data-i18n="[html]tinamous.field.field12"></option>
+      </select>
+  </div>
+  <br/>
+  <div class="form-row">
+    <label for="node-input-format"><i class="icon-tasks"></i> <span data-i18n="tinamous.type.label"></span></label>
+      <select id="node-input-format" style="width:200px !important">
+        <option value="" data-i18n="[html]tinamous.type.select"></option>
+        <option value="realt" data-i18n="[html]tinamous.type.real"></option>
+        <option value="jetl" data-i18n="[html]tinamous.type.lag"></option>
+      </select>
+  </div>
+  <br />
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> <span data-i18n="tinamous.name"></span></label>
+    <input type="text" id="node-input-name" data-i18n="[placeholder]tinamous.name">
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="tinamous">
+  <font size="-2">Create many graph for one device</font>
+   <h2><p>Tinamous</p></h2>
+   <font size="-1"><p>Tinamous allows the user to have 12 graph for each device. Each graph can be download in jpeg, png, pdf or svg format.
+   <br />A free Tinamous account is necessary : http://tinamous.com</p></font>
+
+   <p><b>Node description : </b><p>
+   <font size="-1"><p>This node sends the payload and the timestamp of the message to Tinamous which is going to save the data and create graph. </p>
+
+   <p><b>How to :</b></p>
+   <font size="-1"><p>- Account : Account to authenticate
+   <br />- basic_key : Token which corresponds of your device key. It can be <b>generated on the device setting</b>, don't forget to precise your user name and password or only a half of the key will appear.
+   <br />- field : Corresponds to a graph. Example : <i>Field 1</i></p> </font>
+
+   <p><b>Options :</b></p>
+   <font size="-1"><p>- Real time : Sends data with UTC+00:00 so it doesn't care about the jet lag.
+   <br />- Jet lag : Sends the data considering the time difference. Warning data will be displayed the precise time but will only be displayed when UTC+00:00 be the same as the time of data sent.</p></font>
+
+   <p><b>Time : </b></p>
+   <font size="-1">A time can be specified in <b>msg.timestamp</b>. This time has to be a timestamp.</font>
+</script>
+
+<script type="text/javascript">
+  RED.nodes.registerType('tinamous', {
+    category: 'storage-output',
+    color: "#fff",
+    defaults: {
+      name: {value: ""},
+      account: {value: ""},
+      basic_key: {value: ""},
+      field: {value: ""},
+      format: {value: ""},
+    },
+    inputs:1,
+    outputs:0,
+    icon: "tinamous.png",
+    label: function() {
+      return this.name||"tinamous";
+    },
+    labelStyle: function() {
+      return this.name?"node_label_italic":"";
+    }
+  });
+</script>

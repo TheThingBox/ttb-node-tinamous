@@ -1,0 +1,20 @@
+{
+  "name": "ttb-node-tinamous",
+  "version": "0.0.1",
+  "description": "This node allow the user to set a city and a country attribute.",
+  "node-red": {
+    "nodes": {
+      "tinamous": "tinamous.js"
+    }
+  },
+  "keywords": [
+    "TheThingBox",
+    "node-red",
+    "tinamous"
+  ],
+  "dependencies": {
+    "request": "2.85.0"
+  },
+  "author": "http://www.digitalairways.com/",
+  "license": "http://www.wtfpl.net"
+}
